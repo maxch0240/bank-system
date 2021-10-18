@@ -1,0 +1,13 @@
+.mat-toolbar {
+    background: teal;
+    color: #fff
+}
+
+.mat-raised-button {
+    background: rgb(140, 241, 241);
+    color: #fff
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
