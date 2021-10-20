@@ -8,7 +8,7 @@
         <div class="name">name: {{ account.name }}</div>
         <div class="amount">amount: {{ account.amount }} $</div>
         <button (click)="deleteAccount(account.id)" class="btn btn-danger">Delete</button>
-        <a mat-button routerLink="/update-account" color="#f0fff0">Update</a>
+        <button (click)="updateAccount(account.id)" class="btn btn-danger">Update</button>
     </div>
 </div>
 

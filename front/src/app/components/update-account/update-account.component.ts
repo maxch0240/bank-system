@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountInfo } from 'src/app/models/accountInfo';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -9,20 +9,24 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./update-account.component.css']
 })
 export class UpdateAccountComponent implements OnInit {
+  id!: number;
   form: any = {};
   accountInfo!: AccountInfo;
   errorMessage = '';
 
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor(private accountService: AccountService, private router: Router, 
+              private route: ActivatedRoute) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+   }
 
   onSubmit() {
     this.accountInfo = new AccountInfo(
       this.form.name,
       this.form.amount);
 
-    this.accountService.addAccount(this.accountInfo).subscribe();
+    this.accountService.updateAccount(this.id,this.accountInfo).subscribe();
     this.gotoList();
   }
 
