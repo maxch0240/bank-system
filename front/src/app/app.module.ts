@@ -5,14 +5,16 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 
-import { AccountsComponent } from './components/body/accounts/accounts.component';
-import { TransactionsComponent } from './components/body/transactions/transactions.component';
-import { LoginComponent } from './components/body/login/login.component';
-import { SignupComponent } from './components/body/signup/signup.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
+import { TransactionsComponent } from './components/transactions/transactions.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
-import { BodyComponent } from './components/body/body.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
+import { AddAccountComponent } from './components/add-account/add-account.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateAccountComponent } from './components/update-account/update-account.component';
 
 
 @NgModule({
@@ -22,14 +24,16 @@ import {HttpClientModule} from "@angular/common/http";
     TransactionsComponent,
     LoginComponent,
     SignupComponent,
-    BodyComponent
+    AddAccountComponent,
+    UpdateAccountComponent,
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
     MatButtonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

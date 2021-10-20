@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Account } from 'src/app/models/account'
-import {AccountService} from "../../../services/account.service";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'app-accounts',
@@ -23,5 +23,19 @@ export class AccountsComponent implements OnInit {
         this.accounts = data;
       }
     )
+  }
+
+  reloadData() {
+    this.listAccount();
+  }
+
+  deleteAccount(id: number) {
+    this.accountService.deleteAccount(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
   }
 }
