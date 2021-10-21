@@ -2,12 +2,12 @@
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Account name</label>
-        <input type="text" class="form-control" name="name" value="1231" [(ngModel)]="form.name" 
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" 
                 #name="ngModel" required />
       </div>
       <div class="form-group">
         <label for="amount">Amount</label>
-        <input type="text" class="form-control" name="amount" value="343245" [(ngModel)]="form.amount" 
+        <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" 
                 #amount="ngModel" required />
       </div>
       <div class="form-group">
