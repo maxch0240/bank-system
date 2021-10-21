@@ -41,7 +41,7 @@ public class TransactionController {
         //
         Account account1 = accountRepo.getById(transactionRequest.getAccount_id1());
         Account account2 = accountRepo.getById(transactionRequest.getAccount_id2());
-        if(account1.getAmount() > transactionRequest.getAmount()) {
+        if(account1.getAmount() >= transactionRequest.getAmount()) {
             double newAccBalance1 = account1.getAmount() - transactionRequest.getAmount();
             double newAccBalance2 = account2.getAmount() + transactionRequest.getAmount();
 
@@ -50,10 +50,16 @@ public class TransactionController {
 
             accountRepo.save(account1);
             accountRepo.save(account2);
+
+            return ResponseEntity.ok("transaction created");
         }
+        else {
+            return ResponseEntity.ok("bad transaction");
+        }
+
         //
 
-        return ResponseEntity.ok("transaction created");
+
     }
 
     @DeleteMapping("{id}")

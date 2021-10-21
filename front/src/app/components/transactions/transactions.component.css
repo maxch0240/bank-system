@@ -1,0 +1,7 @@
+.transaction {
+	display: flex;
+	padding: 10px 15px;
+	background-color: #FFF;
+	border-bottom: 1px solid #DDD;
+    gap: 30px;
+}

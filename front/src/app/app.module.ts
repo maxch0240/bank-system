@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AddAccountComponent } from './components/add-account/add-account.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateAccountComponent } from './components/update-account/update-account.component';
+import { AddTransactionComponent } from './components/add-transaction/add-transaction.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { UpdateAccountComponent } from './components/update-account/update-accou
     SignupComponent,
     AddAccountComponent,
     UpdateAccountComponent,
+    AddTransactionComponent,
   ],
   imports: [
     BrowserModule,

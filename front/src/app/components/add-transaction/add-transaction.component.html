@@ -1,0 +1,22 @@
+<div class="row col-sm-6" style="max-width: 350px">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">From account</label>
+        <input type="text" class="form-control" name="account_id1" placeholder="account id" 
+                [(ngModel)]="form.account_id1" #name="ngModel" required/>
+      </div>
+      <div class="form-group">
+        <label for="name">To account</label>
+        <input type="text" class="form-control" name="account_id2" placeholder="account id" 
+                [(ngModel)]="form.account_id2" #name="ngModel" required/>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" class="form-control" name="amount" placeholder="transfer amount" 
+        [(ngModel)]="form.amount" #amount="ngModel" required />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">create</button>
+      </div>
+    </form>
+  </div>
