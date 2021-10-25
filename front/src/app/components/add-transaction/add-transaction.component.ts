@@ -10,6 +10,8 @@ import { TransactionService } from 'src/app/services/transaction.service';
 })
 export class AddTransactionComponent implements OnInit {
 
+  createTransactionFailed: boolean = false;
+
   form: any = {};
   transactionInfo!: TransactionInfo;
   errorMessage = '';
@@ -22,13 +24,21 @@ export class AddTransactionComponent implements OnInit {
     this.transactionInfo = new TransactionInfo(
       this.form.account_id1,
       this.form.account_id2,
-      this.form.amount);
+      this.form.amount,
+      );
 
-    this.transactionService.addTransaction(this.transactionInfo).subscribe();
+
+    this.transactionService.addTransaction(this.transactionInfo).subscribe(
+      result => {
+      },
+      error => { 
+      this.createTransactionFailed = true;
+    });      
     this.gotoList();
+    
   }
 
   gotoList() {
-    this.router.navigate(['/transactions']);
+    if(!this.createTransactionFailed) this.router.navigate(['/transactions']);
   }
 }

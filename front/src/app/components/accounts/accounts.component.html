@@ -1,15 +1,25 @@
-<mat-toolbar><a mat-button routerLink="/add-account" color="#f0fff0">add account</a></mat-toolbar>
+<button type="button" class="btn btn-primary" routerLink="/add-account">Add account</button>
 
-
-
-<div class="accounts">
-    <div class="account" *ngFor="let account of accounts">
-        <div class="id">id: {{ account.id }}</div>
-        <div class="name">name: {{ account.name }}</div>
-        <div class="amount">amount: {{ account.amount }} $</div>
-        <button (click)="deleteAccount(account.id)" class="btn btn-danger">Delete</button>
-        <button (click)="updateAccount(account.id)" class="btn btn-danger">Update</button>
-    </div>
-</div>
-
-<router-outlet></router-outlet>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <th>{{ account.id }}</th>
+        <td>{{ account.name }}</td>
+        <td>{{ account.amount }} $</td>
+        <td>
+            <div class="d-flex justify-content-start">
+                <button (click)="deleteAccount(account.id)" class="btn btn-danger">Delete</button>
+                <button (click)="updateAccount(account.id)" class="btn btn-primary">Update</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,7 +1,15 @@
-.account {
-	display: flex;
-	padding: 10px 15px;
-	background-color: #FFF;
-	border-bottom: 1px solid #DDD;
-    gap: 30px;
+.btn-primary {
+    color: #fff;
+    background-color: rgb(117, 206, 238);
+    border-color: rgb(117, 206, 238);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #54aff0;
+    border-color: #54aff0;
+}
+
+.btn {
+    margin-top: 10px;
+    margin-right: 10px;
 }

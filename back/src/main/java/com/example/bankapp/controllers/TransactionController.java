@@ -6,12 +6,13 @@ import com.example.bankapp.pojo.TransactionRequest;
 import com.example.bankapp.repos.AccountRepo;
 import com.example.bankapp.repos.TransactionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("api/transactions")
@@ -36,9 +37,14 @@ public class TransactionController {
     private ResponseEntity<?> addTransaction(@RequestBody TransactionRequest transactionRequest) {
         Transaction transaction = new Transaction(transactionRequest.getAccount_id1(),
                 transactionRequest.getAccount_id2(), transactionRequest.getAmount());
-        transactionRepo.save(transaction);
+
 
         //
+        accountRepo.findById(transactionRequest.
+                getAccount_id1()).orElseThrow(() -> new RuntimeException("wrong id"));
+        accountRepo.findById(transactionRequest.
+                getAccount_id1()).orElseThrow(() -> new RuntimeException("wrong id"));
+
         Account account1 = accountRepo.getById(transactionRequest.getAccount_id1());
         Account account2 = accountRepo.getById(transactionRequest.getAccount_id2());
         if(account1.getAmount() >= transactionRequest.getAmount()) {
@@ -51,10 +57,11 @@ public class TransactionController {
             accountRepo.save(account1);
             accountRepo.save(account2);
 
+            transactionRepo.save(transaction);
             return ResponseEntity.ok("transaction created");
         }
         else {
-            return ResponseEntity.ok("bad transaction");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         //

@@ -1,12 +1,24 @@
-<mat-toolbar color="primary">
-    <span>Bank</span>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #54aff0;">
+<div class="container-fluid">
+    <a class="navbar-brand" href="/">Bank systems</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts">Accounts </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transactions">Transactions </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
 
-    <div class="spacer"></div>
 
-    <a mat-button routerLink="/accounts">accounts</a>
-    <a mat-button routerLink="/transactions">transactions</a>
-    <a mat-button routerLink="/login">login</a>
-    <a mat-raised-button routerLink="/signup" color="#f0fff0">sign up</a>
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
