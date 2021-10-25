@@ -19,10 +19,14 @@ public class AccountController {
     AccountRepo accountRepo;
 
     @GetMapping
-    ResponseEntity<?> getAllAccounts() {
-        System.out.println("send");
+    public ResponseEntity<?> getAllAccounts() {
         List allAccounts = new ArrayList<Account>(accountRepo.findAll());
         return ResponseEntity.ok(allAccounts);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<?> getOneAccount(@PathVariable("id") Account account) {
+        return ResponseEntity.ok(account);
     }
 
     @PostMapping

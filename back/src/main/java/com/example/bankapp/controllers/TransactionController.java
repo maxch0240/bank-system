@@ -33,6 +33,8 @@ public class TransactionController {
         return ResponseEntity.ok(allTransactions);
     }
 
+
+
     @PostMapping
     private ResponseEntity<?> addTransaction(@RequestBody TransactionRequest transactionRequest) {
         Transaction transaction = new Transaction(transactionRequest.getAccount_id1(),
@@ -47,6 +49,7 @@ public class TransactionController {
 
         Account account1 = accountRepo.getById(transactionRequest.getAccount_id1());
         Account account2 = accountRepo.getById(transactionRequest.getAccount_id2());
+
         if(account1.getAmount() >= transactionRequest.getAmount()) {
             double newAccBalance1 = account1.getAmount() - transactionRequest.getAmount();
             double newAccBalance2 = account2.getAmount() + transactionRequest.getAmount();

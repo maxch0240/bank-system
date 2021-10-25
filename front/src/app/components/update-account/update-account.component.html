@@ -2,13 +2,13 @@
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Account name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" 
-                #name="ngModel" required />
+        <input type="text" class="form-control" name="name" required  [(ngModel)]="account.name" 
+                #name="ngModel" value={{account.name}} />
       </div>
       <div class="form-group">
         <label for="amount">Amount</label>
-        <input type="text" class="form-control" name="amount" [(ngModel)]="form.amount" 
-                #amount="ngModel" required />
+        <input type="text" class="form-control" name="amount" required [(ngModel)]="account.amount" 
+                #amount="ngModel" value={{account.amount}} />
       </div>
       <div class="form-group">
         <button class="btn btn-primary">update</button>

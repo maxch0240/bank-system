@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Account } from "../models/account";
 import { Observable } from 'rxjs';
-import { AccountInfo } from '../models/accountInfo';
 
 
 const httpOptions = {
@@ -20,12 +19,16 @@ export class AccountService {
   constructor(private http: HttpClient) {
   }
 
+  getOneAccount(id: number): Observable<Account> {
+    return this.http.get<Account>(`${this.accountUrl}/${id}`);
+  }
+
   getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.accountUrl);
   }
 
-  addAccount(info: AccountInfo): Observable<string> {
-    return this.http.post<string>(this.accountUrl, info, httpOptions);
+  addAccount(account: Account): Observable<string> {
+    return this.http.post<string>(this.accountUrl, account, httpOptions);
   }
 
   deleteAccount(id: number): Observable<any> {

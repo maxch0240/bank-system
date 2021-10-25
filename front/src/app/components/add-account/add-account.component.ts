@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
-import { AccountInfo } from 'src/app/models/accountInfo';
 import { AccountService } from 'src/app/services/account.service';
 
 
@@ -13,7 +12,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class AddAccountComponent implements OnInit {
 
   form: any = {};
-  accountInfo!: AccountInfo;
+  account!: Account;
   errorMessage = '';
 
   constructor(private accountService: AccountService, private router: Router) { }
@@ -21,11 +20,12 @@ export class AddAccountComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    this.accountInfo = new AccountInfo(
-      this.form.name,
-      this.form.amount);
+    this.account = new Account
+    
+    this.account.name =  this.form.name,
+    this.account.amount = this.form.amount;
 
-    this.accountService.addAccount(this.accountInfo).subscribe();
+    this.accountService.addAccount(this.account).subscribe();
     this.gotoList();
   }
 
