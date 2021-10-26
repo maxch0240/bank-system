@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TransactionInfo } from 'src/app/models/transactionInfo';
+import { Transaction } from 'src/app/models/transaction';
 import { TransactionService } from 'src/app/services/transaction.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AddTransactionComponent implements OnInit {
   createTransactionFailed: boolean = false;
 
   form: any = {};
-  transactionInfo!: TransactionInfo;
+  transaction!: Transaction;
   errorMessage = '';
 
   constructor(private transactionService: TransactionService, private router: Router) { }
@@ -21,14 +21,13 @@ export class AddTransactionComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    this.transactionInfo = new TransactionInfo(
-      this.form.account_id1,
-      this.form.account_id2,
-      this.form.amount,
-      );
+    this.transaction = new Transaction();
 
+    this.transaction.account_id1 = this.form.account_id1;
+    this.transaction.account_id2 = this.form.account_id2;
+    this.transaction.amount = this.form.amount;
 
-    this.transactionService.addTransaction(this.transactionInfo).subscribe(
+    this.transactionService.addTransaction(this.transaction).subscribe(
       result => {
       },
       error => { 

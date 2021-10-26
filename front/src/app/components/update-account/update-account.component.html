@@ -2,17 +2,28 @@
     <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label for="name">Account name</label>
-        <input type="text" class="form-control" name="name" required  [(ngModel)]="account.name" 
-                #name="ngModel" value={{account.name}} />
+        <input type="text" class="form-control" name="name" [(ngModel)]="account.name" 
+                #name="ngModel" value={{account.name}} maxlength="20" required/>
       </div>
+      <div class="validation"
+      *ngIf="name.invalid && (name.dirty || name.touched)">
+        Invalid name
+      </div>
+
       <div class="form-group">
         <label for="amount">Amount</label>
-        <input type="text" class="form-control" name="amount" required [(ngModel)]="account.amount" 
-                #amount="ngModel" value={{account.amount}} />
+        <input type="number" class="form-control" name="amount" [(ngModel)]="account.amount" 
+                #amount="ngModel" value={{account.amount}} maxlength="20" required/>
       </div>
+      <div class="validation"
+      *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+        Invalid amount
+      </div>
+
       <div class="form-group">
         <button class="btn btn-primary">update</button>
       </div>
     </form>
   </div>
+
 

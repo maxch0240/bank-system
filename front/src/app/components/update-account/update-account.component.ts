@@ -11,7 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class UpdateAccountComponent implements OnInit {
   id!: number;
   form: any = {};
-  account: Account = {id: 0, name: "", amount: 0};
+  account!: Account;;
 
   constructor(private accountService: AccountService, private router: Router, 
               private route: ActivatedRoute) { }
@@ -26,10 +26,6 @@ export class UpdateAccountComponent implements OnInit {
    
 
   onSubmit() {
-    // this.accountInfo = new AccountInfo(
-    //   this.form.name,
-    //   this.form.amount);
-
     this.accountService.updateAccount(this.id,this.account).subscribe();
     this.gotoList();
   }

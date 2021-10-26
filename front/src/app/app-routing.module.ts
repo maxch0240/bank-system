@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'add-account', component: AddAccountComponent },
   { path: 'update-account/:id', component: UpdateAccountComponent },
   { path: 'add-transaction', component: AddTransactionComponent},
-  { path: '', redirectTo: '', pathMatch: 'full'}
+  { path: '', redirectTo: 'accounts', pathMatch: 'full'}
 ];
 
 @NgModule({

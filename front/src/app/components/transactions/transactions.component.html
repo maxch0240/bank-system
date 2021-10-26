@@ -1,12 +1,26 @@
-<mat-toolbar><a mat-button routerLink="/add-transaction" color="#f0fff0">add transaction</a></mat-toolbar>
+<button type="button" class="btn btn-primary" routerLink="/add-transaction">Add transaction</button>
 
-<div class="transactions">
-    <div class="transaction" *ngFor="let transaction of transactions">
-        <div class="id">transaction id: {{ transaction.id }}</div>
-        <div class="account_id1">from acc_id: {{ transaction.account_id1 }}</div>
-        <div class="account_id2">to acc_id: {{ transaction.account_id2 }}</div>
-        <div class="amount">amount: {{ transaction.amount }} $</div>
-        <button (click)="deleteTransaction(transaction.id)" class="btn btn-danger">Delete</button>
-    </div>
-</div>
-
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">From account</th>
+        <th scope="col">To account</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <th>{{ transaction.id }}</th>
+        <td>{{ transaction.account_id1 }}</td>
+        <td>{{ transaction.account_id2 }}</td>
+        <td>{{ transaction.amount }} $</td>
+        <td>
+            <div class="d-flex justify-content-start">
+                <button (click)="deleteTransaction(transaction.id)" class="btn btn-danger">Delete</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

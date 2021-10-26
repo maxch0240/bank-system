@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaction } from '../models/transaction';
-import { TransactionInfo } from '../models/transactionInfo';
 
 const httpOptions = {
   headers: new  HttpHeaders({'Content-Type':'application/json'})
@@ -23,8 +22,8 @@ export class TransactionService {
     return this.http.get<Transaction[]>(this.transactionUrl);
   }
 
-  addTransaction(info: TransactionInfo): Observable<string> {
-    return this.http.post<string>(this.transactionUrl, info, httpOptions);
+  addTransaction(transaction: Transaction): Observable<string> {
+    return this.http.post<string>(this.transactionUrl, transaction, httpOptions);
   }
 
   deleteTransaction(id: number): Observable<any> {
