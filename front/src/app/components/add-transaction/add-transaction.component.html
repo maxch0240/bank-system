@@ -1,4 +1,4 @@
-<div class="row col-sm-6" style="max-width: 350px">
+<!-- <div class="row col-sm-6" style="max-width: 350px">
   <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div class="form-group">
       <label for="name">From account</label>
@@ -19,6 +19,10 @@
     *ngIf="account_id2.invalid && (account_id2.dirty || account_id2.touched)">
       Invalid id
     </div>
+    <div class="validation"
+    *ngIf="(account_id2 == account_id2)">
+      Choose different id's
+    </div>
 
     <div class="form-group">
       <label for="amount">Amount</label>
@@ -29,9 +33,51 @@
     *ngIf="amount.invalid && (amount.dirty || amount.touched)">
       Invalid amount
     </div>
-    
+
     <div class="form-group">
       <button class="btn btn-primary">create</button>
     </div>
   </form>
+</div> -->
+<div class="row col-sm-6" style="max-width: 350px">
+    <div>
+      <select (change)="selectAccountId1($event)"
+      [(ngModel)]="selectedAccountId1">
+      <option [value]="acc.id" *ngFor="let acc of accounts">id: {{acc.id}} name: {{acc.name}}</option>
+       </select>
+    </div> 
+    
+    <div>
+      <select (change)="selectAccountId2($event)"
+      [(ngModel)]="selectedAccountId2">
+      <option [value]="acc.id" *ngFor="let acc of accounts">id: {{acc.id}} name: {{acc.name}}</option>
+       </select>
+    </div> 
+  
+    <div class="validation"
+      *ngIf="(selectedAccountId1 === selectedAccountId2)">
+        choose different account id's
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" class="form-control" name="amount" [(ngModel)]="form.amount" #amount="ngModel"
+             required min="0"/>
+    </div>
+    <div class="validation"
+    *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+      Invalid amount
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" [disabled]="checkSelectedAccounts() ||
+       !form.amount || amount.invalid" (click)="onSubmit()">create</button>
+    </div>
 </div>
+
+
+<div>
+  {{selectedAccountId1}}
+  {{selectedAccountId2}}
+</div>
+
